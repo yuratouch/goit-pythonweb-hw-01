@@ -1,0 +1,38 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS metadata files
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# VSCode settings (optional, якщо не хочеш комітити локальні налаштування)
+.vscode/
+
+# Poetry local config
+poetry.toml
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Test & coverage artifacts
+.cache/
+.coverage
+coverage.xml
+htmlcov/
