@@ -1,50 +1,53 @@
 from abc import abstractmethod, ABC
+import logging
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 
 class Vehicle(ABC):
     @abstractmethod
-    def start_engine(self):
+    def start_engine(self) -> None:
         pass
 
 
 class Car(Vehicle):
-    def __init__(self, make, model, spec):
+    def __init__(self, make: str, model: str, spec: str) -> None:
         self.make = make
         self.model = model
         self.spec = f"{spec} Spec"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.make} {self.model} ({self.spec})"
 
-    def start_engine(self):
-        print(f"{self.make} {self.model} {self.spec}: Двигун запущено")
+    def start_engine(self) -> None:
+        logging.info(f"{self.make} {self.model} {self.spec}: Двигун запущено")
 
 
 class Motorcycle(Vehicle):
-    def __init__(self, make, model, spec):
+    def __init__(self, make: str, model: str, spec: str) -> None:
         self.make = make
         self.model = model
         self.spec = f"{spec} Spec"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.make} {self.model} ({self.spec})"
 
-    def start_engine(self):
-        print(f"{self.make} {self.model} {self.spec}: Мотор заведено")
+    def start_engine(self) -> None:
+        logging.info(f"{self.make} {self.model} {self.spec}: Мотор заведено")
 
 
 class VehicleFactory(ABC):
     @abstractmethod
-    def create_car(self, make, model):
+    def create_car(self, make: str, model: str) -> Car:
         pass
 
     @abstractmethod
-    def create_motorcycle(self, make, model):
+    def create_motorcycle(self, make: str, model: str) -> Motorcycle:
         pass
 
 
 class USVehicleFactory(VehicleFactory):
-    def __init__(self):
+    def __init__(self) -> None:
         self.spec = "US"
 
     def create_car(self, make: str, model: str) -> Car:
@@ -55,7 +58,7 @@ class USVehicleFactory(VehicleFactory):
 
 
 class EUVehicleFactory(VehicleFactory):
-    def __init__(self):
+    def __init__(self) -> None:
         self.spec = "EU"
 
     def create_car(self, make: str, model: str) -> Car:
