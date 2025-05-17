@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
-import logging
-
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+from logger import logger
 
 
 class Book:
@@ -41,9 +39,9 @@ class Library(LibraryInterface):
 
     def show_books(self) -> None:
         if not self.books:
-            logging.info("No books in the library.")
+            logger.info("No books in the library.")
         for book in self.books:
-            logging.info(book)
+            logger.info(book)
 
 
 class LibraryManager:
@@ -81,7 +79,7 @@ def main() -> None:
             case "exit":
                 break
             case _:
-                logging.info("Invalid command. Please try again.")
+                logger.info("Invalid command. Please try again.")
 
 
 if __name__ == "__main__":
